@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Seal.Backend.DAL.DataContext;
 
-namespace Seal.WebApp
+namespace Seal.Frontend.WebApp
 {
     public class Startup
     {

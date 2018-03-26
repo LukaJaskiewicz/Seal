@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Seal.Common.Infrastructure.Services;
 
-namespace Seal.WebApp.Controllers
+namespace Seal.Frontend.WebApp.Controllers
 {
     public class TemplateController : Controller
     {

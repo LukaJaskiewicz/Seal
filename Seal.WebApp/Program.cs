@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Seal.WebApp
+namespace Seal.Frontend.WebApp
 {
     public class Program
     {
