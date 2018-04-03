@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seal.Backend.BLL\Seal.Backend.BLL.csproj" />
+    <ProjectReference Include="..\Seal.Backend.DAL\Seal.Backend.DAL.csproj" />
+    <ProjectReference Include="..\Seal.Common.Infrastructure\Seal.Common.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

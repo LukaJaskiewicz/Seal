@@ -6,18 +6,19 @@ using System.Text;
 
 namespace Seal.Backend.BLL.Services
 {
-    public class TemplateService : ITemplateService
+    
+    public class MainService : ITemplateService
     {
         private readonly ITemplateRepository _repository;
-        public TemplateService(ITemplateRepository repository)
+        public MainService(ITemplateRepository repository)
         {
             _repository = repository;
         }
 
         public string Foo(int number)
         {
-            var x = this._repository.GetFoo();
-            return String.Format("The only {0} returns from forest", x);
+            this._repository.GetFoo();
+            return String.Format("The only {0} returns from forest", number - 1);
         }
     }
 }

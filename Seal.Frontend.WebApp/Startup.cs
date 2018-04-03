@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -9,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Seal.Backend.DAL.DataContext;
+using Seal.Common.Dependiencies.DI;
 
 namespace Seal.Frontend.WebApp
 {
@@ -21,15 +24,25 @@ namespace Seal.Frontend.WebApp
 
         public IConfiguration Configuration { get; }
 
+        public IContainer ApplicationContainer { get; private set; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=TemplateDB;Trusted_Connection=True;";
 
-            //Register db context for application. 
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=Template0304;Trusted_Connection=True;";
+
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+           
+            var builder = new ContainerBuilder();
+            builder.RegisterModule(new ContextHandlerModule());
+            builder.RegisterModule(new ServicesHandlerModule());
+            builder.RegisterModule(new RepositoryHandlerModule());
+            builder.Populate(services);
+            this.ApplicationContainer = builder.Build();
 
+            return new AutofacServiceProvider(this.ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

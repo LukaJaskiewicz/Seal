@@ -4,13 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Seal.Common.Infrastructure.Services;
 
 namespace Seal.Frontend.WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITemplateService _service;
+
+        public HomeController(ITemplateService service)
+        {
+            this._service = service;
+        }
         public IActionResult Index()
         {
+            var x = _service.Foo(123);
             return View();
         }
 

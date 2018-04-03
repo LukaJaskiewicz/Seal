@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Seal.Common.Infrastructure.Services;
 
 namespace Seal.Frontend.WebApp.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+
+        private readonly ITemplateService _service;
+
+        public SampleDataController(ITemplateService service)
+        {
+            this._service = service;
+        }
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
