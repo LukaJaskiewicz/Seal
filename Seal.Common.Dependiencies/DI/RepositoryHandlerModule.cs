@@ -8,7 +8,7 @@ namespace Seal.Common.Dependiencies.DI
     {
         protected override void Load(ContainerBuilder builder)
         {
-
+            //Rejestracja
             builder.RegisterType<TemplateRepository>().As<ITemplateRepository>().InstancePerLifetimeScope();
             builder.RegisterType<HopRepository>().As<IHopRepository>().InstancePerLifetimeScope();
         }
