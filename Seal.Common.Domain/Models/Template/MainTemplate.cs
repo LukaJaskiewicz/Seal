@@ -13,6 +13,8 @@ namespace Seal.Common.Domain.Models.Template
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public string AdditionalDescription { get; set; }
+
         public List<RelatedTemplate> RelatedTemplates { get; set; } = new List<RelatedTemplate>();
     }
 }

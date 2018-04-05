@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Seal.Common.Domain.DataContext;
+using Seal.Common.Domain.Models.Hop;
 using Seal.Common.Domain.Models.Template;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace Seal.Backend.DAL.DataContext
         }
         public DbSet<MainTemplate> MainTemplate { get; set; }
         public DbSet<RelatedTemplate> RelatedTemplate { get; set; }
+        public DbSet<Hop> Hops { get; set; }
+
     }
 }

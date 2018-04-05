@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Seal.Common.Infrastructure\Seal.Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\Seal.Common.ViewModel\Seal.Common.ViewModel.csproj" />
   </ItemGroup>
 
 </Project>

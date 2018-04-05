@@ -1,4 +1,6 @@
-﻿using Seal.Common.Infrastructure.Models;
+﻿
+
+using Seal.Common.ViewModel.Interaces;
 
 namespace Seal.Common.ViewModel.Template
 {

@@ -11,6 +11,7 @@ namespace Seal.Common.Dependiencies.DI
         {
             
             builder.RegisterType<TemplateService>().As<ITemplateService>().InstancePerLifetimeScope();
+            builder.RegisterType<IngredientsService>().As<IIngredientsService>().InstancePerLifetimeScope();
         }
     }
 }

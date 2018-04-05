@@ -1,4 +1,4 @@
-﻿namespace Seal.Common.Infrastructure.Models
+﻿namespace Seal.Common.ViewModel.Interaces
 {
     public interface IViewModel<T>
     {

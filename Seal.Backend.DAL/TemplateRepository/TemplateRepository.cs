@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Seal.Backend.DAL.TemplateRepository
 {
@@ -21,16 +22,23 @@ namespace Seal.Backend.DAL.TemplateRepository
 
         public int GetFoo()
         {
+            var chartDefinitions = Context.MainTemplate.Where(x => x.Id == 4).FirstOrDefault();
+           
             return 123;
         }
 
-        //  public async Task<IEnumerable<T>> GetTemplatesAsync<T>(int id) where T : MainTemplate
-        //public async Task<IEnumerable<T>> GetTemplatesAsync<T>(int id) where T : MainTemplate
+        //public async Task<> GetFooAsunc<T>(int id) where T : MainTemplate
+        //public async Task<MainTemplate> GetFooAsunc(int id) 
         //{
-        //    var chartDefinitions = await Context.MainTemplate.ToListAsync<T>().ContinueWith<IList<MainTemplate>>(t => t, TaskContinuationOptions.ExecuteSynchronously); ;
-
-
-        //    return chartDefinitions;
+        //    var result = await Context.MainTemplate.Where(x => x.Id == 4);
+        //    return result;
         //}
+
+        public async Task<MainTemplate> GetTemplatesAsync(int id) 
+        {
+            var chartDefinitions = await Context.MainTemplate.FirstAsync(x => x.Id >= 3);
+           
+            return chartDefinitions;
+        }
     }
 }
