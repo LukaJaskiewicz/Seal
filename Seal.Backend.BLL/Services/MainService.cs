@@ -7,7 +7,7 @@ using System.Text;
 namespace Seal.Backend.BLL.Services
 {
     
-    public class MainService : ITemplateService
+    public class MainService 
     {
         private readonly ITemplateRepository _repository;
         public MainService(ITemplateRepository repository)

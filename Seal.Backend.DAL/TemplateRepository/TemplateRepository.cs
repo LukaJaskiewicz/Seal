@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Seal.Common.ViewModel.Interaces;
+using Seal.Common.ViewModel.Template;
+using AutoMapper.QueryableExtensions;
 
 namespace Seal.Backend.DAL.TemplateRepository
 {
@@ -22,21 +25,20 @@ namespace Seal.Backend.DAL.TemplateRepository
 
         public int GetFoo()
         {
-            var chartDefinitions = Context.MainTemplate.Where(x => x.Id == 4).FirstOrDefault();
-           
+            var chartDefinitions = Context.MainTemplate.Where(x => x.Id == 4).ProjectTo<TemplateViewModel>().ToList();
+
             return 123;
         }
 
-        //public async Task<> GetFooAsunc<T>(int id) where T : MainTemplate
-        //public async Task<MainTemplate> GetFooAsunc(int id) 
-        //{
-        //    var result = await Context.MainTemplate.Where(x => x.Id == 4);
-        //    return result;
-        //}
-
-        public async Task<MainTemplate> GetTemplatesAsync(int id) 
+        public async Task<T> GetFooAsync<T>(int id) where T : class, IViewModel<int>
         {
-            var chartDefinitions = await Context.MainTemplate.FirstAsync(x => x.Id >= 3);
+            var result = await Context.MainTemplate.Where(x => x.Id == id).ProjectTo<T>().FirstAsync();
+            return result;
+        }
+
+        public async Task<T> GetTemplatesAsync<T>(int id) where T : class, IViewModel<int>
+        {
+            var chartDefinitions = await Context.MainTemplate.Where(x => x.Id >= 3).ProjectToFirstOrDefaultAsync<T>();
            
             return chartDefinitions;
         }

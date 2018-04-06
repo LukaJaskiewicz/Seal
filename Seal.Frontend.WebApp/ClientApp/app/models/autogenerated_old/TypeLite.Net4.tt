@@ -1,0 +1,49 @@
+﻿<#@ template debug="false" hostspecific="True" language="C#" #>
+<#@ assembly name="$(TargetDir)TypeLite.dll" #>
+<#@ assembly name="$(TargetDir)TypeLite.Net4.dll" #>
+<#@ assembly name="$(TargetDir)$(TargetFileName)" #>
+<#@ assembly name="$(TargetDir)Seal.Common.ViewModel.dll" #>
+
+<#@ import namespace="TypeLite" #> 
+<#@ import namespace="TypeLite.Net4" #> 
+
+<#@output extension=".d.ts"#>
+
+<#@include file="Manager.ttinclude"#>
+<# var manager = Manager.Create(Host, GenerationEnvironment); #>
+
+<#
+var ts = TypeScript.Definitions()
+				   .AsConstEnums(false)
+				   .ForLoadedAssemblies()
+				   .WithMemberFormatter((identifier) =>
+				   {
+				       return Char.ToLower(identifier.Name[0]) + identifier.Name.Substring(1);
+				   })
+				   .WithModuleNameFormatter((module) =>
+				   {
+					   var newName = module.Name.Split(new []{'.'}).Last();
+					   if(module.Name.StartsWith("Seal.Common.ViewModel.Models")){							
+							return "App.Models." + newName;
+					   } 
+				   });
+
+var assembly = typeof(Seal.Common.ViewModel.Models.Test.TestViewModel).Assembly;
+
+
+var commandTypes = assembly.GetTypes().Where(t => t.Namespace != null && t.Namespace.StartsWith("Seal.Common.ViewModel") && t.Name.EndsWith("ViewModel"));
+
+foreach(var type in commandTypes)
+{
+    ts = ts.For(type);
+}
+
+
+#>
+
+<#= ts.Generate(TsGeneratorOutput.Properties) #>
+
+<# manager.StartNewFile("Enums.ts"); #>
+<#= ts.Generate(TsGeneratorOutput.Enums) #>
+<# manager.EndBlock(); #>
+<# manager.Process(true); #>

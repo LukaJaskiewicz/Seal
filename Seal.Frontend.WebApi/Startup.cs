@@ -1,21 +1,22 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.Webpack;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Seal.Backend.DAL.DataContext;
-using Seal.Common.Dependiencies.DI;
 using AutoMapper;
 using Seal.Common.Dependiencies.Mappings;
+using Microsoft.EntityFrameworkCore;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Seal.Common.Dependiencies.DI;
 
-namespace Seal.Frontend.WebApp
+namespace Seal.Frontend.WebApi
 {
     public class Startup
     {
@@ -25,7 +26,6 @@ namespace Seal.Frontend.WebApp
         }
 
         public IConfiguration Configuration { get; }
-
         public IContainer ApplicationContainer { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -39,7 +39,7 @@ namespace Seal.Frontend.WebApp
             var connection = @"Server=(local);Database=SEAL.Main;Trusted_Connection=True;";
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
-           
+
             var builder = new ContainerBuilder();
             builder.RegisterModule(new ContextHandlerModule());
             builder.RegisterModule(new ServicesHandlerModule());
@@ -56,28 +56,9 @@ namespace Seal.Frontend.WebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true
-                });
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
-            });
+            app.UseMvc();
         }
     }
 }

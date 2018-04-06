@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Seal.Common.Infrastructure.Services;
+using Seal.Common.ViewModel.Template;
 
 namespace Seal.Frontend.WebApp.Controllers
 {
@@ -26,6 +27,12 @@ namespace Seal.Frontend.WebApp.Controllers
         {
             ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
             return View();
+        }
+
+        public async Task<TemplateViewModel> Get()
+        {
+            var result = await _service.GetFooAsync<TemplateViewModel>(1);
+            return result;
         }
     }
 }

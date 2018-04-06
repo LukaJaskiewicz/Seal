@@ -9,7 +9,7 @@ namespace Seal.Backend.DAL.TemplateRepository
 {
  
 
-        public class MainRepository : BaseRepository<IApplicationDbContext>, ITemplateRepository
+        public class MainRepository : BaseRepository<IApplicationDbContext>
         {
             public MainRepository(IApplicationDbContext context) : base(context)
             {
