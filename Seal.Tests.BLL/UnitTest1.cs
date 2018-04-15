@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Seal.Tests.BLL
 {
+    
     public class UnitTest1
     {
         [Fact]

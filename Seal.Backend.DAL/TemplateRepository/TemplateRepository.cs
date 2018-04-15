@@ -36,11 +36,11 @@ namespace Seal.Backend.DAL.TemplateRepository
             return result;
         }
 
-        public async Task<T> GetTemplatesAsync<T>(int id) where T : class, IViewModel<int>
+        public async Task<List<T>> GetTemplatesAsync<T>(int id) where T : class, IViewModel<int>
         {
-            var chartDefinitions = await Context.MainTemplate.Where(x => x.Id >= 3).ProjectToFirstOrDefaultAsync<T>();
+            var a = await Context.MainTemplate.ProjectTo<T>().Where(x => x.Id >= 3).ProjectTo<T>().ToListAsync();
            
-            return chartDefinitions;
+            return a;
         }
     }
 }

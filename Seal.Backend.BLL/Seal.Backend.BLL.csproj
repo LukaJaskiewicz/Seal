@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Seal.Common.Infrastructure\Seal.Common.Infrastructure.csproj" />
     <ProjectReference Include="..\Seal.Common.ViewModel\Seal.Common.ViewModel.csproj" />
   </ItemGroup>

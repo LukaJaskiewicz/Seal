@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seal.Common.Dependiencies",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seal.Frontend.WebApp", "Seal.Frontend.WebApp\Seal.Frontend.WebApp.csproj", "{762F7D2D-A08D-4CB4-9439-91C440249C99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seal.Tests.Integration", "Seal.Tests.Integration\Seal.Tests.Integration.csproj", "{DDA39333-E6DE-4EB0-BCA3-17910E4AA3DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seal.Tests.Integration", "Seal.Tests.Integration\Seal.Tests.Integration.csproj", "{DDA39333-E6DE-4EB0-BCA3-17910E4AA3DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seal.Frontend.WebApi", "Seal.Frontend.WebApi\Seal.Frontend.WebApi.csproj", "{5F9AE94D-22A6-4C78-8280-CBF877F92FDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seal.Frontend.Api", "Seal.Frontend.WebApi\Seal.Frontend.Api.csproj", "{5F9AE94D-22A6-4C78-8280-CBF877F92FDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

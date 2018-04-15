@@ -36,7 +36,7 @@ namespace Seal.Frontend.WebApp
                 cfg.AddProfile(new TemplateProfile());
             });
 
-            var connection = @"Server=(local);Database=SEAL.Main;Trusted_Connection=True;";
+            var connection = @"Server=.;Database=SEAL.Main;Trusted_Connection=True;";
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
            

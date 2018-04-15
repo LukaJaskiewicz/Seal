@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Seal.Backend.DAL.Base
 {
-    public abstract class BaseRepository<T>
+    public abstract class BaseRepository<T> 
     {
         protected readonly T Context;
 

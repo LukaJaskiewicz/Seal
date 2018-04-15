@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Seal.Common.Domain.Models.Hop;
 using Seal.Common.Domain.Models.Template;
+using Seal.Common.ViewModel.Hop;
 using Seal.Common.ViewModel.Template;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,10 @@ namespace Seal.Common.Dependiencies.Mappings
         {
             CreateMap<MainTemplate, TemplateViewModel>()
            .ForMember(dest => dest.Desc, m=>m.MapFrom(x=>x.Description))
+           .ReverseMap();
+
+
+            CreateMap<Hop, HopViewModel>()
            .ReverseMap();
         }
     }

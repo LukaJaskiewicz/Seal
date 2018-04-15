@@ -17,11 +17,18 @@ namespace Seal.Frontend.WebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<HopViewModel> Get()
+        public async Task<HopViewModel> Get(int id)
         {
-            var result = await _ingredientsService.GetAsync();
+            var result = await _ingredientsService.GetHopAsync<HopViewModel>(id);
 
             return result;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody]HopViewModel hop)
+        {
+            await _ingredientsService.AddHop(hop);
+            return Ok();
         }
     }
 }
