@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
+import { HopService } from './services/hop.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -17,6 +19,9 @@ import { CounterComponent } from './components/counter/counter.component';
         CounterComponent,
         FetchDataComponent,
         HomeComponent
+    ],
+    providers: [
+        HopService
     ],
     imports: [
         CommonModule,
@@ -28,8 +33,9 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
-        ])
-    ]
+        ],)
+    ],
+
 })
 export class AppModuleShared {
 }
