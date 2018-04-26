@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Seal.Frontend.WebApp.Controllers
 {
+    [Route("api/[controller]")]
     public class HopController : Controller
     {
         readonly IIngredientsService _ingredientsService;

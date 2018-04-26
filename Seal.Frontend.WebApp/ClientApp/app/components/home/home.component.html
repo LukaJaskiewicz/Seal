@@ -1,6 +1,6 @@
 <h1>Hello, world!</h1>
-<p>Welcome to your new single-page application, built with:</p>
-<table class='table' *ngIf="forecasts">
+<p>Tabela dla chmiela : {{hop2}} -> {{hop.name}}</p>
+<table class='table'>
     <thead>
         <tr>
             <th>Id</th>
@@ -9,10 +9,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let hop of getHop()">
-            <td>{{ hop.Id }}</td>
-            <td>{{ hop.Name }}</td>
-            <td>{{ hop.Desc }}</td>
+        <tr>
+            <td>{{ hop.id }}</td>
+            <td>{{ hop.name }}</td>
+            <td>{{ hop.description }}</td>
         </tr>
     </tbody>
 </table>
